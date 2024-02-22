@@ -17,13 +17,16 @@ export const typeDefs = `#graphql
         status: String!
     }
     # TODO: Add a schema for orders!
+
     # Queries for requesting data
     type Query {
         users: [User]
         user(id: ID!): User
         # TODO: Add in queries for ALL orders and a specific order by id!
+
         drivers: [Driver]
         driver(id: ID!): Driver
+        # TODO: Add a query for orders by restaurant
     }
     # Mutations for modification of data
     type Mutation {

@@ -6,7 +6,7 @@ export const resolvers = {
     // Queries are for fetching data
     Query: {
         // Standard queries: get all, get by identifier
-        // TODO: Add in queries for ALL orders and a specific order by id!
+        // TODO: Add in queries for ALL orders, a specific order by id, and orders by restaurant
         users() {
             return users;
         },
@@ -19,9 +19,6 @@ export const resolvers = {
         driver(_, {id}) {
             return drivers.find(driver => driver.id === id);
         },
-        ordersByRestaurant(_, args) {
-            return orders.filter(order => order.restaurant === args.restaurant);
-        }
     },
     // Mutations are for adding, deleting, and modifying data
     Mutation: {
@@ -50,6 +47,12 @@ export const resolvers = {
             return newOrder;
         },
         // TODO: Accept an order as a driver
+        // Hints: 
+        // Ensure the driver is available to accept the order
+        // Ensure the order hasn't already been completed
+        // Ensure the order doesn't already have a driver
+        // Update the order and driver accordingly
+        // Return the updated order!
     },
 
     // For querying related data, we introduce custom objects
