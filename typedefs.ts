@@ -8,17 +8,6 @@ export const typeDefs = `#graphql
         balance: Float!
         orders: [Order!]
     }
-    type Order {
-        id: ID!
-        name: String!
-        restaurant: String!
-        quantity: Int!
-        instructions: String
-        cost: Float!
-        owner: User!
-        status: String!
-        driver: Driver
-    }
     type Driver {
         id: ID!
         username: String!
@@ -27,20 +16,19 @@ export const typeDefs = `#graphql
         orders: [Order!]
         status: String!
     }
+    # TODO: Add a schema for orders!
     # Queries for requesting data
     type Query {
         users: [User]
         user(id: ID!): User
-        orders: [Order]
-        order(id: ID!): Order
+        # TODO: Add in queries for ALL orders and a specific order by id!
         drivers: [Driver]
         driver(id: ID!): Driver
-        ordersByRestaurant(restaurant: String!): [Order]
     }
     # Mutations for modification of data
     type Mutation {
         placeOrder(order: OrderInput!): Order!
-        acceptOrder(order: AcceptOrderInput): Order!
+        # TODO: Define a mutation for accepting an order as a driver
     }
     # Special Input Types
     input OrderInput {
@@ -51,8 +39,5 @@ export const typeDefs = `#graphql
         cost: Float!
         owner: String!
     }
-    input AcceptOrderInput {
-        driver: ID!
-        order: ID!
-    }
+    # TODO: Define a custom input type for accepting an order
 `

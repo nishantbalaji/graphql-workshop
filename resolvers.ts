@@ -6,12 +6,7 @@ export const resolvers = {
     // Queries are for fetching data
     Query: {
         // Standard queries: get all, get by identifier
-        orders() {
-            return orders;
-        },
-        order(_, {id}) {
-            return orders.find(order => order.id === id);
-        },
+        // TODO: Add in queries for ALL orders and a specific order by id!
         users() {
             return users;
         },
@@ -54,41 +49,7 @@ export const resolvers = {
             orders.push(newOrder);
             return newOrder;
         },
-        // Accept an order as a driver
-        acceptOrder(_, args) {
-            // Validation - is the driver available?
-            const requestingDriver = args.order.driver;
-            console.log(requestingDriver);
-            const driverStatus = drivers.find(driver => driver.id === requestingDriver).status;
-            console.log(driverStatus);
-            if (driverStatus !== "Available") {
-                throw new Error("Driver is not available");
-            }
-
-            // Validation - is the order still pending or is there a driver already assigned?
-            console.log("ORDER", args.order.order);
-            const order = orders.find(order => order.id === args.order.order);
-            console.log(order);
-            if (order.status !== "Pending") {
-                throw new Error("Order is not pending");
-            }
-
-            console.log(order.driver);
-            if (order.driver !== null) {
-                throw new Error("Order already has a driver");
-            }
-
-            console.log("hi mom");
-            // Update the order status and driver status
-            orders[orders.findIndex(order => order.id === args.order.order)].driver = requestingDriver;
-            orders[orders.findIndex(order => order.id === args.order.order)].status = "In Progress";
-
-            console.log("FINAL ORDER", orders[orders.findIndex(order => order.id === args.order.order)]);
-
-            const finalOrder = orders[orders.findIndex(order => order.id === args.order.order)];
-
-            return finalOrder;
-        }
+        // TODO: Accept an order as a driver
     },
 
     // For querying related data, we introduce custom objects
