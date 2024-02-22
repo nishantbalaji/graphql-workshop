@@ -14,16 +14,17 @@ export const typeDefs = `#graphql
         restaurant: String!
         quantity: Int!
         instructions: String
-        cost: Float
+        cost: Float!
         owner: User!
-        status: String
+        status: String!
+        driver: Driver
     }
     type Driver {
         id: ID!
         username: String!
         name: String!
         car: String!
-        orders: [Order!]!
+        orders: [Order!]
         status: String!
     }
     type Query {
@@ -37,11 +38,18 @@ export const typeDefs = `#graphql
     }
     type Mutation {
         placeOrder(order: OrderInput!): Order!
+        acceptOrder(order: AcceptOrderInput): Order!
     }
     input OrderInput {
         name: String!
         restaurant: String!
         quantity: Int!
         instructions: String
+        cost: Float!
+        owner: String!
+    }
+    input AcceptOrderInput {
+        driver: ID!
+        order: ID!
     }
 `

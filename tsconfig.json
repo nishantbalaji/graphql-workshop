@@ -8,6 +8,9 @@
       "moduleResolution": "node",
       "esModuleInterop": true,
       "types": ["node"],
-      "resolveJsonModule": true
-    }
+      "resolveJsonModule": true,
+    },
+    "ts-node": {
+      "esm": true
+  }
 }
