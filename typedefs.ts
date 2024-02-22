@@ -1,5 +1,5 @@
 export const typeDefs = `#graphql
-
+    # Custom object types
     type User {
         id: ID!
         username: String!
@@ -27,6 +27,7 @@ export const typeDefs = `#graphql
         orders: [Order!]
         status: String!
     }
+    # Queries for requesting data
     type Query {
         users: [User]
         user(id: ID!): User
@@ -36,10 +37,12 @@ export const typeDefs = `#graphql
         driver(id: ID!): Driver
         ordersByRestaurant(restaurant: String!): [Order]
     }
+    # Mutations for modification of data
     type Mutation {
         placeOrder(order: OrderInput!): Order!
         acceptOrder(order: AcceptOrderInput): Order!
     }
+    # Special Input Types
     input OrderInput {
         name: String!
         restaurant: String!

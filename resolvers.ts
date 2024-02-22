@@ -31,22 +31,26 @@ export const resolvers = {
     // Mutations are for adding, deleting, and modifying data
     Mutation: {
         placeOrder(_, args) {
-            // Validation - does the user have enough balance to place the order?
             const orderingUser = args.order.owner;
+            console.log(orderingUser);
 
-            const orderingUserBalance = users[users.findIndex(user => user.username === orderingUser)].balance;
+            // Search for user by id
+            const orderingUserBalance = users[users.findIndex(user => user.id === orderingUser)].balance;
+            console.log(orderingUserBalance);
 
-
-            if (orderingUserBalance < args.cost) {
+            // Validation - does the user have enough balance to place the order?
+            if (orderingUserBalance < args.order.cost) {
                 throw new Error("Insufficient balance");
             }
 
+            // Create a new order object
             let newOrder = {
                 id: uuid.v4(),
                 ...args.order
             }
   
-            users[users.findIndex(user => user.username === orderingUser)].balance -= args.order.cost;
+            // Decrement user balance, and add order to orders array
+            users[users.findIndex(user => user.id === orderingUser)].balance -= args.order.cost;
             orders.push(newOrder);
             return newOrder;
         },
@@ -102,11 +106,11 @@ export const resolvers = {
             return orders.filter((order) => order.driver === parent.id);
         }
     },
-    // Orders to drivers
+    // Orders to drivers/owners
     Order: {
-        // owner(parent, args, context, info) {
-        //     return users.find((user) => user.username === parent.owner);
-        // },
+        owner(parent, args, context, info) {
+            return users.find((user) => user.username === parent.owner);
+        },
         driver(parent, args, context, info) {
             if (parent.driver === null) {
                 return null;
