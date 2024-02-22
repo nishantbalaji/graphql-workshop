@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nik-dange/graphql-workshop.git"
+    "url": "git+https://github.com/acmucsd/graphql-workshop.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/nik-dange/graphql-workshop/issues"
+    "url": "https://github.com/acmucsd/graphql-workshop/issues"
   },
-  "homepage": "https://github.com/nik-dange/graphql-workshop#readme",
+  "homepage": "https://github.com/acmucsd/graphql-workshop#readme",
   "dependencies": {
     "@apollo/server": "^4.10.0",
     "graphql": "^16.8.1",
