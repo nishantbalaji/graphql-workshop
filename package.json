@@ -1,0 +1,34 @@
+{
+  "name": "graphql-workshop",
+  "version": "1.0.0",
+  "description": "ACM Hack's GraphQL Workshop. Hosted in February 2024.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "tsc && nodemon dist/index.js",
+    "dev": "nodemon -e ts -w . -x node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nik-dange/graphql-workshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/nik-dange/graphql-workshop/issues"
+  },
+  "homepage": "https://github.com/nik-dange/graphql-workshop#readme",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "graphql": "^16.8.1",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "nodemon": "^3.0.3",
+    "typescript": "^5.3.3"
+  }
+}
